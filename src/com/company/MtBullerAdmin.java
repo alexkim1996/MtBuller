@@ -137,20 +137,26 @@ public class MtBullerAdmin extends MtBullerResort {
          */
         LocalDate date = LocalDate.parse("2020-10-10");
         TravelPackage travel = new TravelPackage(1, 2, date);
-
         addAccommodation(travel);
-
         travelpackage.add(travel);
         listPackages();
     }
 
     public void addAccommodation(TravelPackage pg) {
-        pg.acco = new Accommodation(1, "Lodge", 200.0, true);
+        //TODO list available acc and scan user input
+        int selectedID = 101;
+        //search accomo array for the ID
+        for (Accommodation ac: accommodation){
+            if (ac.accID == selectedID) {
+                ac.availability = false;
+                pg.acco = ac;
+            }
+        }
     }
 
 
 
-        public void addLiftPass() {}
+    public void addLiftPass() {}
 
     public void addLessonFees() {}
 
