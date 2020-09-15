@@ -65,7 +65,7 @@ public class MtBullerAdmin extends MtBullerResort {
                     listCustomers();
                     break;
                 case 5:
-                    //addPackage();
+                    addPackage();
                     break;
                 case 6:
                     //addLiftPass();
@@ -74,7 +74,7 @@ public class MtBullerAdmin extends MtBullerResort {
                     //addLessonFees();
                     break;
                 case 8:
-                    //listPackages();
+                    listPackages();
                     break;
                 case 9:
                     //savePackages();
@@ -115,6 +115,49 @@ public class MtBullerAdmin extends MtBullerResort {
     public void listCustomers() {
         for (Customer c:customer) System.out.println(c);
     }
+
+    public void addPackage() {
+        /*Scanner input = new Scanner(System.in);
+        System.out.println("Customer ID? ");
+        int custID = input.nextInt();
+        input.nextLine();
+        System.out.print("Duration? ");
+        int dur = input.nextInt();
+        input.nextLine();
+
+        System.out.print("Date in format yyyy-mm-dd? ");
+        String dateStr = input.nextLine();
+        LocalDate date = null;
+        try{
+            date = LocalDate.parse(dateStr);
+        }
+        catch(Exception e){}
+
+
+         */
+        LocalDate date = LocalDate.parse("2020-10-10");
+        TravelPackage travel = new TravelPackage(1, 2, date);
+
+        addAccommodation(travel);
+
+        travelpackage.add(travel);
+        listPackages();
+    }
+
+    public void addAccommodation(TravelPackage pg) {
+        pg.acco = new Accommodation(1, "Lodge", 200.0, true);
+    }
+
+
+
+        public void addLiftPass() {}
+
+    public void addLessonFees() {}
+
+    public void listPackages() {
+        for (TravelPackage t:travelpackage) System.out.println(t);
+    }
+
 
     public static void main(String[] args) {
 
