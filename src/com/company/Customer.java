@@ -11,4 +11,7 @@ public class Customer {
         this.name = name;
         this.levelOfSkiing = levelOfSkiing;
     }
+
+    public String toString(){ return "Customer ID: " + custID + ", Name: " + name + " Level of Skiing: " + levelOfSkiing;}
+
 }

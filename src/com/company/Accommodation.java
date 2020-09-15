@@ -14,4 +14,8 @@ public class Accommodation {
         this.availability = availability;
 
     }
+
+    public String toString () {
+        return "Accommodation ID: " + accID + ", type: " + type  + ", price per day: " + pricePerDay + ", available?  " + availability;
+    }
 }

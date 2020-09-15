@@ -59,10 +59,10 @@ public class MtBullerAdmin extends MtBullerResort {
                     displayAvailableAcc();
                     break;
                 case 3:
-                    //addCustomer();
+                    addCustomer();
                     break;
                 case 4:
-                    //listCustomers();
+                    listCustomers();
                     break;
                 case 5:
                     //addPackage();
@@ -102,6 +102,20 @@ public class MtBullerAdmin extends MtBullerResort {
         }
     }
 
+    public void addCustomer() {
+        //TODO turn this into a scanner!
+        int accID = 999;
+        String name = "Hello";
+        String level = "Intermediate";
+        Customer a = new Customer(accID, name, level);
+        customer.add(a);
+        listCustomers();
+    }
+
+    public void listCustomers() {
+        for (Customer c:customer) System.out.println(c);
+    }
+
     public static void main(String[] args) {
 
         MtBullerAdmin mba = new MtBullerAdmin();
@@ -109,6 +123,8 @@ public class MtBullerAdmin extends MtBullerResort {
         mba.run();
 
     }
+
+
 
 
 }
