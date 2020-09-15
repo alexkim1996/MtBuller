@@ -6,11 +6,13 @@ public class TravelPackage {
     public int duration;
     public LocalDate startDate;
     public Accommodation acco;
+    //public double lessonFees;
 
     public TravelPackage (int custID, int duration, LocalDate startDate){
         this.custID = custID;
         this.duration = duration;
         this.startDate = startDate;
+        //this.lessonFees = lessonFees;
     }
 
     public String toString(){

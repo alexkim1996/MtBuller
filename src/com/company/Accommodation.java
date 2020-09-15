@@ -15,6 +15,15 @@ public class Accommodation {
 
     }
 
+
+    public int getAccID () {
+        return accID;
+    }
+
+    public void setAccID(int accID){
+        this.accID = accID;
+    }
+
     public String toString () {
         return "Accommodation ID: " + accID + ", type: " + type  + ", price per day: " + pricePerDay + ", available?  " + availability;
     }
