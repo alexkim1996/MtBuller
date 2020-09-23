@@ -76,7 +76,7 @@ public class MtBullerAdmin extends MtBullerResort {
                     //addLiftPass();
                     break;
                 case 7:
-                    //addLessonFees();
+                    addLessonFees();
                     break;
                 case 8:
                     listPackages();
@@ -168,16 +168,48 @@ public class MtBullerAdmin extends MtBullerResort {
     public void addLiftPass() {
     }
 
-    public void addLessonFees(TravelPackage pg) {
+
+    public void addLessonFees() {
 
         System.out.println("Please choose a lesson.\n------------------------\n" +
                         "1: Beginner ($25)\n" +
                         "2: Intermediate ($20)\n" +
                         "3: Expert ($15)\n");
 
+        System.out.print("Choose an option: ");
         Scanner input = new Scanner(System.in);
-        double selectedLesson = input.nextDouble();
+        int option = input.nextInt();
         input.nextLine();
+
+        switch (option) {
+            case 1:
+                System.out.println("How many beginner lessons would you like to add?");
+                System.out.print("Enter a number: ");
+                Scanner no1 = new Scanner(System.in);
+                int number1 = no1.nextInt();
+                no1.nextLine();
+                System.out.println("Your total cost is " + "$"+ number1 * 25);
+                break;
+            case 2:  // fall through
+                System.out.println("How many intermediate lessons would you like to add?");
+                System.out.print("Enter a number: ");
+                Scanner no2 = new Scanner(System.in);
+                int number2 = no2.nextInt();
+                no2.nextLine();
+                System.out.println("Your total cost is " + "$"+ number2 * 20);
+                break;
+            case 3:
+                System.out.println("How many expert lessons would you like to add?");
+                System.out.print("Enter a number: ");
+                Scanner no3 = new Scanner(System.in);
+                int number3 = no3.nextInt();
+                no3.nextLine();
+                System.out.println("Your total cost is " + "$"+ number3 * 15);
+                break;
+            default:
+                System.out.println("Please enter a choice between 1-3.");
+        }
+
 
 
 
