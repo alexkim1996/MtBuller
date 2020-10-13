@@ -15,7 +15,6 @@ public class Accommodation {
 
     }
 
-
     public int getAccID () {
         return accID;
     }

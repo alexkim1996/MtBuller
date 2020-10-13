@@ -4,19 +4,20 @@ import java.util.ArrayList;
 
 public class MtBullerResort {
 
-    public static ArrayList<Accommodation> accommodation ;
-    public static ArrayList<Customer> customer ;
-    public static ArrayList<TravelPackage> travelpackage;
+    //public static ArrayList<Accommodation> accommodation ;
+    //public static ArrayList<Customer> customer ;
+   // public static ArrayList<TravelPackage> travelpackage;
 
 
-    public MtBullerResort(){
+   // public MtBullerResort(){
 
-        accommodation = new ArrayList<>();
-        customer = new ArrayList<>();
-        travelpackage = new ArrayList<>();
+        //accommodation = new ArrayList<>();
+       // customer = new ArrayList<>();
+       // travelpackage = new ArrayList<>();
 
 
     }
-}
 
 
+
+//these can be inside main class

@@ -1,15 +1,29 @@
 package com.company;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
 
 
 public class MtBullerAdmin extends MtBullerResort {
 
+    private static ArrayList<Accommodation> accommodation ;
+    private static ArrayList<Customer> customer ;
+    private static ArrayList<TravelPackage> travelpackage;
+
     private FileInputStream fis;
     private ObjectInputStream ois;
     private FileOutputStream fos;
     private ObjectOutputStream oos;
+
+    public MtBullerAdmin(){
+
+        accommodation = new ArrayList<>();
+        customer = new ArrayList<>();
+        travelpackage = new ArrayList<>();
+
+
+    }
 
     public void populateList() {
 
@@ -26,9 +40,9 @@ public class MtBullerAdmin extends MtBullerResort {
                 new Accommodation(14, "Hotel", 140.0, true)};
 
         Customer[] arrOfCustomers = {
-                new Customer(3001, "Dio", "Expert"),
-                new Customer(3002, "Joseph", "Beginner"),
-                new Customer(3004, "Jotaro", "Intermediate")
+                new Customer("Dio", "Expert"),
+                new Customer("Joseph", "Beginner"),
+                new Customer("Jotaro", "Intermediate")
         };
         for (int i = 0; i < arrOfAccommodation.length; i++) accommodation.add(arrOfAccommodation[i]);
         for (int i = 0; i < arrOfCustomers.length; i++) customer.add(arrOfCustomers[i]);
@@ -73,7 +87,7 @@ public class MtBullerAdmin extends MtBullerResort {
                     addPackage();
                     break;
                 case 6:
-                    //addLiftPass();
+                    addLiftPass();
                     break;
                 case 7:
                     addLessonFees();
@@ -117,7 +131,7 @@ public class MtBullerAdmin extends MtBullerResort {
         String name = input.nextLine();
         System.out.println("Please enter experience level: (Beginner, Intermediate or Expert)");
         String level = input.nextLine();
-        Customer a = new Customer(custID, name, level);
+        Customer a = new Customer(name, level);
         customer.add(a);
         listCustomers();
     }
@@ -144,8 +158,11 @@ public class MtBullerAdmin extends MtBullerResort {
         TravelPackage travel = new TravelPackage(custID, duration, startDate);
         addAccommodation(travel);
         travelpackage.add(travel);
-        listPackages();
+        addLiftPass();
     }
+    //addPackage should only be able to select existing customers
+    //this method is not supposed to create a new customer
+    //addPackage should call methods addLiftPass and addLessonFees
 
     public void addAccommodation(TravelPackage pg) {
 
@@ -164,11 +181,28 @@ public class MtBullerAdmin extends MtBullerResort {
         }
     }
 
+//TODO
+    public Customer addLiftPass() {
 
-    public void addLiftPass() {
+        listPackages();
+        System.out.println("Please select your package using your customer ID.");
+        Scanner input = new Scanner(System.in);
+        int custID = input.nextInt();
+        input.nextLine();
+        for (Customer c:customer) {
+            if (c.getCustID() == custID)
+                return c;
+        }
+        return null;
     }
+    //display all packages
+    //prompt the user for cust ID to select package
+    //display liftpasses
+    //select liftpass type
+    //add it using setLiftPass
+    //costs to be added to total
 
-
+//TODO
     public void addLessonFees() {
 
         System.out.println("Please choose a lesson.\n------------------------\n" +
@@ -209,7 +243,10 @@ public class MtBullerAdmin extends MtBullerResort {
             default:
                 System.out.println("Please enter a choice between 1-3.");
         }
-
+//display all packages
+//prompt user to enter ID to select package
+//add lessons to the package using setLessonFees
+//lesson fees have to be added to total cost
 
 
 
