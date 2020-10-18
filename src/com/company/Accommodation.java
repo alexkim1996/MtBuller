@@ -19,7 +19,7 @@ public class Accommodation implements Serializable{
     public Accommodation(){
         accID = nextID++;
     }
-    public Accommodation(String type, int numberOfBeds, double pricePerDay){
+    public Accommodation(int numberOfBeds,String type, double pricePerDay){
         this.type = type;
         this.numberOfBeds = numberOfBeds;
         this.pricePerDay = pricePerDay;

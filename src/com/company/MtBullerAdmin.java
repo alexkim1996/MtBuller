@@ -28,16 +28,16 @@ public class MtBullerAdmin extends MtBullerResort {
     public void populateList() {
 
         Accommodation[] arrOfAccommodation = {
-                new Accommodation(1, "Lodge", 180.0, true),
-                new Accommodation(101, "Lodge", 110.0, true),
-                new Accommodation(2, "Lodge", 150.0, true),
-                new Accommodation(103, "Lodge", 100.0, true),
-                new Accommodation(3, "Apartment", 170.0, true),
-                new Accommodation(104, "Apartment", 120.0, true),
-                new Accommodation(11, "Hotel", 150.0, true),
-                new Accommodation(12, "Hotel", 160.0, true),
-                new Accommodation(13, "Hotel", 120.0, true),
-                new Accommodation(14, "Hotel", 140.0, true)};
+                new Accommodation(10, "Lodge", 180.0),
+                new Accommodation(8, "Lodge", 110.0),
+                new Accommodation(6, "Lodge", 150.0),
+                new Accommodation(6, "Lodge", 100.0),
+                new Accommodation(3, "Apartment", 170.0),
+                new Accommodation(2, "Apartment", 120.0),
+                new Accommodation(3, "Hotel", 150.0),
+                new Accommodation(3, "Hotel", 160.0),
+                new Accommodation(2, "Hotel", 120.0),
+                new Accommodation(2, "Hotel", 140.0)};
 
         Customer[] arrOfCustomers = {
                 new Customer("Dio", "Expert"),
@@ -84,7 +84,7 @@ public class MtBullerAdmin extends MtBullerResort {
                     listCustomers();
                     break;
                 case 5:
-                    addPackage();
+                    //addPackage();
                     break;
                 case 6:
                     addLiftPass();
@@ -117,7 +117,7 @@ public class MtBullerAdmin extends MtBullerResort {
 
     public void displayAvailableAcc() {
         for (Accommodation a : accommodation) {
-            if (a.availability) System.out.println(a);
+            if (a.isAvailable) System.out.println(a);
         }
     }
 
@@ -140,7 +140,7 @@ public class MtBullerAdmin extends MtBullerResort {
         for (Customer c : customer) System.out.println(c);
     }
 
-    public void addPackage() {
+    /* public void addPackage() {
         Scanner input = new Scanner(System.in);
         System.out.println("Customer ID? ");
         int custID = input.nextInt();
@@ -164,6 +164,8 @@ public class MtBullerAdmin extends MtBullerResort {
     //this method is not supposed to create a new customer
     //addPackage should call methods addLiftPass and addLessonFees
 
+/*
+     */
     public void addAccommodation(TravelPackage pg) {
 
         System.out.println("Please select accommodation by ID.");
@@ -175,8 +177,8 @@ public class MtBullerAdmin extends MtBullerResort {
         input.nextLine();
         for (Accommodation ac : accommodation) {
             if (ac.accID == selectedID) {
-                ac.availability = false;
-                pg.acco = ac;
+                ac.isAvailable = false;
+              //TODO //pg.acco = ac;
             }
         }
     }
@@ -190,7 +192,7 @@ public class MtBullerAdmin extends MtBullerResort {
         int custID = input.nextInt();
         input.nextLine();
         for (Customer c:customer) {
-            if (c.getCustID() == custID)
+            //TODO if (c.getCustID() == custID)
                 return c;
         }
         return null;
