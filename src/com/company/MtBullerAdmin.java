@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.io.*;
 
 
-public class MtBullerAdmin extends MtBullerResort {
+public class MtBullerAdmin {
 
     private static ArrayList<Accommodation> accommodation ;
     private static ArrayList<Customer> customer ;
@@ -140,18 +140,26 @@ public class MtBullerAdmin extends MtBullerResort {
      public void addPackage() {
         Scanner input = new Scanner(System.in);
         System.out.println("Customer ID? ");
+         while (!input.hasNextInt()){
+             System.out.println("Please enter a customer ID!");
+             input.next();
+         }
         int custId = input.nextInt();
          Customer tempCustomer = new Customer();
          for (Customer loopCustomer : customer) {
-             if (loopCustomer.getCustId() == custId){
+             if (loopCustomer.getCustId() == custId) {
                  tempCustomer = loopCustomer;
-                break;
+                 break;
              }
-             //todo what if customer is not in array?
+
          }
 
         input.nextLine();
         System.out.print("Duration? ");
+        while (!input.hasNextInt()){
+            System.out.println("Please enter a number!");
+            input.next();
+        }
         int duration = input.nextInt();
         input.nextLine();
         System.out.print("Date in format yyyy-mm-dd? ");
@@ -160,12 +168,14 @@ public class MtBullerAdmin extends MtBullerResort {
         try {
             startDate = LocalDate.parse(dateStr);
         } catch (Exception e) {
+            System.out.println("Please enter a valid date!");
+            addPackage();
         }
         TravelPackage travel = new TravelPackage(tempCustomer, duration, startDate);
         addAccommodation(travel);
         travelpackage.add(travel);
         addLiftPass();
-        //addLessonFees();
+        addLessonFees();
     }
     //addPackage should only be able to select existing customers
     //this method is not supposed to create a new customer
@@ -221,7 +231,7 @@ public class MtBullerAdmin extends MtBullerResort {
         System.out.println("Please select your package using your package ID.");
         Scanner input = new Scanner(System.in);
         int packageID = input.nextInt();
-        //add try catch block
+
         TravelPackage tempTP = new TravelPackage();
         for (TravelPackage loopTP : travelpackage) {
             if (loopTP.getPackageID() == packageID) {
