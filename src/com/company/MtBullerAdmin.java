@@ -124,9 +124,6 @@ public class MtBullerAdmin extends MtBullerResort {
     public void addCustomer() {
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Please enter customer ID: ");
-        int custID = input.nextInt();
-        input.nextLine();
         System.out.println("Please enter customer name: ");
         String name = input.nextLine();
         System.out.println("Please enter experience level: (Beginner, Intermediate or Expert)");
