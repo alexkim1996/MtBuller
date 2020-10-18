@@ -89,7 +89,7 @@ public class TravelPackage implements Serializable{
     }
 
     public void setLiftPass(double lifts){
-   /*  Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
      System.out.print("Choose lift pass:\n"+
                        "1 - Full day $26\n"+
                        "2 - For 5-10 days $117\n" +
@@ -109,8 +109,8 @@ public class TravelPackage implements Serializable{
          System.out.println("Enter choice 1, 2, or 3");
 
      }
-*/
-        liftPass = lifts;
+
+        //liftPass = lifts;
 
     }
 
@@ -120,7 +120,7 @@ public class TravelPackage implements Serializable{
                 "\nDuration: " + duration + " days. Start date: " + startDate;
 
         if(accommodation != null)
-            packageStr+= "\nAccomodation " + accommodation;
+            packageStr+= "\nAccommodation " + accommodation;
 
         if (liftPass !=0.0)
             packageStr +=". Included lift pass $" + liftPass;

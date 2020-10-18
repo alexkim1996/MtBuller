@@ -84,7 +84,7 @@ public class MtBullerAdmin extends MtBullerResort {
                     listCustomers();
                     break;
                 case 5:
-                    //addPackage();
+                    addPackage();
                     break;
                 case 6:
                     addLiftPass();
@@ -137,10 +137,19 @@ public class MtBullerAdmin extends MtBullerResort {
         for (Customer c : customer) System.out.println(c);
     }
 
-    /* public void addPackage() {
+     public void addPackage() {
         Scanner input = new Scanner(System.in);
         System.out.println("Customer ID? ");
-        int custID = input.nextInt();
+        int custId = input.nextInt();
+         Customer tempCustomer = new Customer();
+         for (Customer loopCustomer : customer) {
+             if (loopCustomer.getCustId() == custId){
+                 tempCustomer = loopCustomer;
+                break;
+             }
+             //todo what if customer is not in array?
+         }
+
         input.nextLine();
         System.out.print("Duration? ");
         int duration = input.nextInt();
@@ -152,17 +161,16 @@ public class MtBullerAdmin extends MtBullerResort {
             startDate = LocalDate.parse(dateStr);
         } catch (Exception e) {
         }
-        TravelPackage travel = new TravelPackage(custID, duration, startDate);
+        TravelPackage travel = new TravelPackage(tempCustomer, duration, startDate);
         addAccommodation(travel);
         travelpackage.add(travel);
         addLiftPass();
+        //addLessonFees();
     }
     //addPackage should only be able to select existing customers
     //this method is not supposed to create a new customer
     //addPackage should call methods addLiftPass and addLessonFees
 
-/*
-     */
     public void addAccommodation(TravelPackage pg) {
 
         System.out.println("Please select accommodation by ID.");
@@ -174,25 +182,29 @@ public class MtBullerAdmin extends MtBullerResort {
         input.nextLine();
         for (Accommodation ac : accommodation) {
             if (ac.accID == selectedID) {
-                ac.isAvailable = false;
-              //TODO //pg.acco = ac;
+                ac.setIsAvailable(false);
+                pg.setAccommodation(ac);
+
             }
         }
     }
 
 //TODO
-    public Customer addLiftPass() {
+    public void addLiftPass() {
 
         listPackages();
-        System.out.println("Please select your package using your customer ID.");
+        System.out.println("Please select your package using your package ID.");
         Scanner input = new Scanner(System.in);
-        int custID = input.nextInt();
-        input.nextLine();
-        for (Customer c:customer) {
-            //TODO if (c.getCustID() == custID)
-                return c;
+        int packageID = input.nextInt();
+        TravelPackage tempTP = new TravelPackage();
+        for (TravelPackage loopTP : travelpackage) {
+            if (loopTP.getPackageID() == packageID) {
+                tempTP = loopTP;
+                break;
+            }
         }
-        return null;
+        tempTP.setLiftPass(1);
+        listPackages();
     }
     //display all packages
     //prompt the user for cust ID to select package
