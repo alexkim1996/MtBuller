@@ -216,52 +216,35 @@ public class MtBullerAdmin extends MtBullerResort {
 //TODO
     public void addLessonFees() {
 
-        System.out.println("Please choose a lesson.\n------------------------\n" +
-                        "1: Beginner ($25)\n" +
-                        "2: Intermediate ($20)\n" +
-                        "3: Expert ($15)\n");
 
-        System.out.print("Choose an option: ");
+        listPackages();
+        System.out.println("Please select your package using your package ID.");
         Scanner input = new Scanner(System.in);
-        int option = input.nextInt();
-        input.nextLine();
-
-        switch (option) {
-            case 1:
-                System.out.println("How many beginner lessons would you like to add?");
-                System.out.print("Enter a number: ");
-                Scanner no1 = new Scanner(System.in);
-                int number1 = no1.nextInt();
-                no1.nextLine();
-                System.out.println("Your total cost is " + "$"+ number1 * 25);
+        int packageID = input.nextInt();
+        //add try catch block
+        TravelPackage tempTP = new TravelPackage();
+        for (TravelPackage loopTP : travelpackage) {
+            if (loopTP.getPackageID() == packageID) {
+                tempTP = loopTP;
                 break;
-            case 2:  // fall through
-                System.out.println("How many intermediate lessons would you like to add?");
-                System.out.print("Enter a number: ");
-                Scanner no2 = new Scanner(System.in);
-                int number2 = no2.nextInt();
-                no2.nextLine();
-                System.out.println("Your total cost is " + "$"+ number2 * 20);
-                break;
-            case 3:
-                System.out.println("How many expert lessons would you like to add?");
-                System.out.print("Enter a number: ");
-                Scanner no3 = new Scanner(System.in);
-                int number3 = no3.nextInt();
-                no3.nextLine();
-                System.out.println("Your total cost is " + "$"+ number3 * 15);
-                break;
-            default:
-                System.out.println("Please enter a choice between 1-3.");
+            }
         }
+        System.out.println("How many lessons would you like to add?");
+        System.out.print("Enter a number: ");
+        Scanner no1 = new Scanner(System.in);
+        int number1 = no1.nextInt();
+
+        tempTP.setLessonsCost(number1);
+        listPackages();
+    }
+
+
+
 //display all packages
 //prompt user to enter ID to select package
 //add lessons to the package using setLessonFees
 //lesson fees have to be added to total cost
 
-
-
-    }
 
     public void listPackages() {
         for (TravelPackage t : travelpackage) System.out.println(t);
