@@ -1,40 +1,71 @@
 package com.company;
 
-public class Customer {
+import java.io.*;
 
-    private int custID;
-    static int nextID = 1;
+/**
+ *
+ * @author olga
+ */
+
+public class Customer implements Serializable{
+
+    private int custId;
     private String name;
-    private String levelOfSkiing;
+    private String skiingLevel;
+    static int nextID = 10;
+    private double lessonFee;
 
-    public Customer(String name, String levelOfSkiing){
+
+    public Customer () {
+        custId = nextID++;
+    }
+
+    public Customer (String name) {
         this.name = name;
-        this.levelOfSkiing = levelOfSkiing;
-        custID = nextID++;
+        custId = nextID++;
     }
+    public Customer (String name, String skillsLevel) {
+        custId = nextID++;
+        this.name = name;
+        this.skiingLevel = skillsLevel;
+        setLessonFee();
 
-    public int getCustID(){
-        return custID;
     }
-    public void setCustID(int custID){
-        this.custID = custID;
+    public int getCustId () {
+        return custId;
     }
-
-    public String getName(){
+    public String getName () {
         return name;
     }
-    public void setName (String name){
+    public String getSkillsLevel(){
+        return skiingLevel;
+    }
+    public void setSkiingLevel(String skiingLevel){
+        this.skiingLevel=skiingLevel;
+    }
+
+    public void setName (String name) {
         this.name = name;
     }
+    public void setLessonFee() {
 
-    public String getLevelOfSkiing(){
-        return levelOfSkiing;
+        if(skiingLevel.equalsIgnoreCase("Beginner"))
+            lessonFee = 25;
+        else if(skiingLevel.equalsIgnoreCase("Intermediate"))
+            lessonFee = 20;
+        else if(skiingLevel.equalsIgnoreCase("Expert"))
+            lessonFee = 15;
     }
-    public void setLevelOfSkiing (String levelOfSkiing){
-        this.levelOfSkiing = levelOfSkiing;
+
+    public double getLessonFee(){
+        return lessonFee;
     }
-    public String toString(){ return "Customer ID: " + custID + ", Name: " + name + " Level of Skiing: " + levelOfSkiing;}
+    public String toString () {
+
+        String custStr = "ID: " + custId + ", name: " + name + ", level: " + skiingLevel;
+
+        return custStr;
+    }
 
 }
-
 // have to utilise getters and setters for input and retrieval

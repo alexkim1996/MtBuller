@@ -1,29 +1,50 @@
 package com.company;
 
-public class Accommodation {
+import java.io.*;
+/**
+ *
+ * @author e00475
+ */
 
-    public int accID;
-    public String type;
-    public double pricePerDay;
-    public boolean availability;
 
-    public Accommodation(int accID, String type, double pricePerDay, boolean availability) {
-        this.accID = accID;
-        this.type = type;
-        this.pricePerDay = pricePerDay;
-        this.availability = availability;
+public class Accommodation implements Serializable{
 
+    protected int accID;
+    protected String type;
+    protected int numberOfBeds;
+    protected double pricePerDay;
+    protected boolean isAvailable = true;
+    static int nextID = 100;
+
+    public Accommodation(){
+        accID = nextID++;
     }
-
-    public int getAccID () {
+    public Accommodation(String type, int numberOfBeds, double pricePerDay){
+        this.type = type;
+        this.numberOfBeds = numberOfBeds;
+        this.pricePerDay = pricePerDay;
+        accID = nextID++;
+    }
+    public boolean getIsAvailable(){
+        return isAvailable;
+    }
+    public String getType(){
+        return type;
+    }
+    public int getAccID(){
         return accID;
     }
-
-    public void setAccID(int accID){
-        this.accID = accID;
+    public double getPricePerDay(){
+        return pricePerDay;
     }
-
-    public String toString () {
-        return "Accommodation ID: " + accID + ", type: " + type  + ", price per day: " + pricePerDay + ", available?  " + availability;
+    public int getNumberOfBeds(){
+        return numberOfBeds;
+    }
+    public void setIsAvailable(boolean isAvailable){
+        this.isAvailable = isAvailable;
+    }
+    public String toString(){
+        return "ID: " + accID + ", type: " + type + ", no of beds "+ numberOfBeds
+                + ",  price Per Day: " + pricePerDay;
     }
 }
